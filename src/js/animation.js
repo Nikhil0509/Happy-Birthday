@@ -23,6 +23,20 @@ const frames = document.querySelectorAll(".frame"),
 
 //Sfx files
 
+function insertText() {
+  const div = document.createElement("div");
+  div.textContent = "Bas itna hi hai 😅😂";
+  div.style.fontSize= "18px"
+  div.style.padding = "5px";
+
+  // Loop through each frame and append the div
+  frames.forEach(frame => {
+    setTimeout(() => {
+      frame.appendChild(div.cloneNode(true)); // Use cloneNode to ensure each frame gets a new instance of the div
+    }, 30000); // 15 seconds delay
+  });
+}
+
 const light = document.querySelector(".switch-aud"),
   blast = document.querySelector(".blast-aud"),
   door = document.querySelector(".door-aud"),
@@ -128,7 +142,7 @@ export const animate = function () {
       giftroom.style.display = "none";
       transition(flash);
 
-      music.loop = true;
+      music.loop = false;
       music.play();
 
       if (!process.env.SCROLL_MSG) {
@@ -137,6 +151,7 @@ export const animate = function () {
           frames[0].classList.add("appear");
           frames[0].style.opacity = "1";
         }, 1500);
+        insertText()
         return;
       }
 
