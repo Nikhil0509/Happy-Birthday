@@ -1,7 +1,7 @@
 [build]
   base = "./"
   publish = "./dist/"
-  command = "npm run build:parcel"
+  command = "npm run init-index-local && npm run build:parcel"
 
 [template.environment]
   NAME = "Jyoti"
